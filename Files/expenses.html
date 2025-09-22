@@ -5,10 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kaci Connect - Expenses Page</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .calculator-btn {
+      transition: all 0.2s ease;
+    }
+    .calculator-btn:active {
+      transform: scale(0.95);
+    }
+    .calculator-display {
+      min-height: 60px;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+  </style>
 </head>
 <body class="bg-[#F5F5F5] text-gray-800 leading-relaxed font-sans">
 
-    <header class="bg-gradient-to-r from-[#007AFF] to-[#0050cc] text-white px-[5%] py-4 flex justify-between items-center shadow-md">
+  <header class="bg-gradient-to-r from-[#007AFF] to-[#0050cc] text-white px-[5%] py-4 flex justify-between items-center shadow-md">
     <div class="text-2xl font-bold">KACI CONNECT</div>
     
     <ul class="hidden md:flex list-none">
@@ -21,18 +34,88 @@
     
     <div class="flex gap-4">
       <button class="px-5 py-2 rounded border border-white text-white font-medium hover:bg-white/10 transition">Profile</button>
-      <!-- <button class="px-5 py-2 rounded bg-[#FFFF00] border border-[#FFFF00] text-[#141414] font-medium hover:bg-[#e6e600] hover:border-[#e6e600] transition">Sign Up</button> -->
     </div>
   </header>
 
   <div class="max-w-[1200px] mx-auto px-5 py-8 grid grid-cols-1 md:grid-cols-3 gap-6">
     
-    <!-- Expense Calculator Placeholder -->
+    <!-- Expense Calculator -->
     <div class="bg-white rounded-lg p-6 shadow">
       <h3 class="text-lg font-semibold text-[#007AFF] mb-4">Expense Calculator</h3>
-      <div id="expense-calculator" class="h-64 flex items-center justify-center text-gray-400 border border-dashed border-gray-300 rounded">
-        <!-- Your calculator will go here -->
-        <span>Expense Calculator Placeholder</span>
+      <div id="expense-calculator" class="bg-gray-50 rounded-lg overflow-hidden shadow-inner">
+        <!-- Calculator Display -->
+        <div class="p-4 bg-white">
+          <div id="calculator-display" class="calculator-display text-right text-2xl font-semibold text-gray-800 py-2 px-3 bg-gray-100 rounded">
+            0
+          </div>
+        </div>
+        
+        <!-- Calculator Buttons -->
+        <div class="grid grid-cols-4 gap-2 p-4">
+          <!-- Row 1 -->
+          <button class="calculator-btn col-span-2 bg-red-500 hover:bg-red-600 text-white font-bold py-3 rounded" onclick="clearCalculator()">
+            C
+          </button>
+          <button class="calculator-btn bg-gray-300 hover:bg-gray-400 font-bold py-3 rounded" onclick="deleteLast()">
+            ⌫
+          </button>
+          <button class="calculator-btn bg-[#007AFF] hover:bg-[#0050cc] text-white font-bold py-3 rounded" onclick="appendToDisplay('/')">
+            ÷
+          </button>
+          
+          <!-- Row 2 -->
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('7')">
+            7
+          </button>
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('8')">
+            8
+          </button>
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('9')">
+            9
+          </button>
+          <button class="calculator-btn bg-[#007AFF] hover:bg-[#0050cc] text-white font-bold py-3 rounded" onclick="appendToDisplay('*')">
+            ×
+          </button>
+          
+          <!-- Row 3 -->
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('4')">
+            4
+          </button>
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('5')">
+            5
+          </button>
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('6')">
+            6
+          </button>
+          <button class="calculator-btn bg-[#007AFF] hover:bg-[#0050cc] text-white font-bold py-3 rounded" onclick="appendToDisplay('-')">
+            -
+          </button>
+          
+          <!-- Row 4 -->
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('1')">
+            1
+          </button>
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('2')">
+            2
+          </button>
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('3')">
+            3
+          </button>
+          <button class="calculator-btn bg-[#007AFF] hover:bg-[#0050cc] text-white font-bold py-3 rounded" onclick="appendToDisplay('+')">
+            +
+          </button>
+          
+          <!-- Row 5 -->
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('0')">
+            0
+          </button>
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('.')">
+            .
+          </button>
+          <button class="calculator-btn col-span-2 bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded" onclick="calculateResult()">
+            =
+          </button>
+        </div>
       </div>
     </div>
 
@@ -79,10 +162,140 @@
 
   </div>
 
-    <!-- Footer -->
+  <!-- Footer -->
   <footer class="bg-gradient-to-r from-[#007AFF] to-[#0050cc] text-white px-[5%] py-10 mt-12">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-[1200px] mx-auto">
       <div>
-        <h3 class="text-lg mb-5 pb-2 relative after:content-['
+        <h3 class="text-lg mb-5 pb-2 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-10 after:h-0.5 after:bg-[#FFFF00]">About Us</h3>
+        <p class="text-sm">Kaci Connect helps you manage your expenses efficiently with our easy-to-use tools and calculators.</p>
+      </div>
+      <div>
+        <h3 class="text-lg mb-5 pb-2 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-10 after:h-0.5 after:bg-[#FFFF00]">Quick Links</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-[#FFFF00] transition">Home</a></li>
+          <li><a href="#" class="hover:text-[#FFFF00] transition">Features</a></li>
+          <li><a href="#" class="hover:text-[#FFFF00] transition">Pricing</a></li>
+          <li><a href="#" class="hover:text-[#FFFF00] transition">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg mb-5 pb-2 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-10 after:h-0.5 after:bg-[#FFFF00]">Contact Info</h3>
+        <ul class="space-y-2 text-sm">
+          <li>Email: info@kaciconnect.com</li>
+          <li>Phone: +27 12 345 6789</li>
+          <li>Address: 123 Finance St, Johannesburg</li>
+        </ul>
+      </div>
+      
+    </div>
+    <div class="border-t border-white/20 mt-8 pt-6 text-center text-sm">
+      <p>&copy; 2025 Kaci Connect. All rights reserved.</p>
+    </div>
+  </footer>
 
-
+  <script>
+    // Calculator functionality
+    let displayValue = '0';
+    let shouldResetDisplay = false;
+    
+    function updateDisplay() {
+      const display = document.getElementById('calculator-display');
+      display.textContent = displayValue;
+    }
+    
+    function appendToDisplay(value) {
+      if (shouldResetDisplay) {
+        displayValue = '';
+        shouldResetDisplay = false;
+      }
+      
+      if (displayValue === '0' && value !== '.') {
+        displayValue = value;
+      } else {
+        // Prevent multiple decimal points in a number
+        if (value === '.' && displayValue.includes('.')) {
+          const lastOperatorIndex = Math.max(
+            displayValue.lastIndexOf('+'),
+            displayValue.lastIndexOf('-'),
+            displayValue.lastIndexOf('*'),
+            displayValue.lastIndexOf('/')
+          );
+          
+          const lastNumber = displayValue.substring(lastOperatorIndex + 1);
+          if (lastNumber.includes('.')) {
+            return;
+          }
+        }
+        
+        displayValue += value;
+      }
+      
+      updateDisplay();
+    }
+    
+    function clearCalculator() {
+      displayValue = '0';
+      shouldResetDisplay = false;
+      updateDisplay();
+    }
+    
+    function deleteLast() {
+      if (displayValue.length > 1) {
+        displayValue = displayValue.slice(0, -1);
+      } else {
+        displayValue = '0';
+      }
+      updateDisplay();
+    }
+    
+    function calculateResult() {
+      try {
+        // Replace × with * and ÷ with / for evaluation
+        const expression = displayValue.replace(/×/g, '*').replace(/÷/g, '/');
+        
+        // Use Function constructor for safe evaluation
+        const result = Function('"use strict"; return (' + expression + ')')();
+        
+        // Handle division by zero
+        if (!isFinite(result)) {
+          displayValue = 'Error';
+        } else {
+          displayValue = result.toString();
+        }
+        
+        shouldResetDisplay = true;
+        updateDisplay();
+      } catch (error) {
+        displayValue = 'Error';
+        shouldResetDisplay = true;
+        updateDisplay();
+      }
+    }
+    
+    // Keyboard support
+    document.addEventListener('keydown', function(event) {
+      const key = event.key;
+      
+      if (key >= '0' && key <= '9') {
+        appendToDisplay(key);
+      } else if (key === '.') {
+        appendToDisplay('.');
+      } else if (key === '+' || key === '-' || key === '*') {
+        appendToDisplay(key);
+      } else if (key === '/') {
+        event.preventDefault(); // Prevent browser search shortcut
+        appendToDisplay('/');
+      } else if (key === 'Enter' || key === '=') {
+        calculateResult();
+      } else if (key === 'Escape' || key === 'c' || key === 'C') {
+        clearCalculator();
+      } else if (key === 'Backspace') {
+        deleteLast();
+      }
+    });
+    
+    // Initialize display
+    updateDisplay();
+  </script>
+</body>
+</html>

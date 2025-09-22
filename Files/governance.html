@@ -13,11 +13,63 @@
     
     <ul class="hidden md:flex list-none">
       <li class="mx-4"><a href="#" class="text-white font-medium hover:text-[#FFFF00] transition">Home</a></li>
-      <li class="mx-4"><a href="#" class="text-white font-medium hover:text-[#FFFF00] transition">Features</a></li>
-      <li class="mx-4"><a href="#" class="text-white font-medium hover:text-[#FFFF00] transition">Pricing</a></li>
+      <li class="dropdown">
+            <a href="#">Pricing</a>
+            <ul class="dropdown-menu">
+                <li><a href="freePlan.html">Free Plan</a></li>
+                <li><a href="premiumPlan.html">Premium Plan</a></li>
+            </ul>
+            </li>
       <li class="mx-4"><a href="#" class="text-white font-medium hover:text-[#FFFF00] transition">About</a></li>
       <li class="mx-4"><a href="#" class="text-white font-medium hover:text-[#FFFF00] transition">Contact</a></li>
     </ul>
+    <style>
+/* Dropdown container */
+.dropdown {
+  position: relative;
+}
+
+/* Hide dropdown by default */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%; /* directly below the parent */
+  left: 0;
+  background: white;
+  min-width: 180px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  border-radius: 6px;
+  z-index: 1000;
+  list-style: none;
+  padding: 10px 0;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Dropdown menu items */
+.dropdown-menu li {
+  margin: 0;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Hover effect */
+.dropdown-menu a:hover {
+  background: var(--tshwane-blue);
+  color: white;
+}
+</style>
+
     
     <div class="flex gap-4">
       <button class="px-5 py-2 rounded border border-white text-white font-medium hover:bg-white/10 transition">Profile</button>

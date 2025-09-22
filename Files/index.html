@@ -13,30 +13,27 @@
         <div class="logo">KACI CONNECT</div>
         
         <ul class="nav-menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Features</a></li>
-            <li><a href="#">Pricing</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#home-section">Home</a></li>
+            <li><a href="#sponsors-section">Sponsors</a></li>
+            <li><a href="#about-section">About</a></li>
+            <li><a href="#contact-section">Contact</a></li>
         </ul>
         
         <div class="auth-buttons">
-            <a href= "login.html"> <button class="btn btn-login">Login</button></a>
-            
-            <a href = "sign-up.html"><button class="btn btn-signup">Sign Up</button></a>
+            <a href="login.html"><button class="btn btn-login">Login</button></a>
+            <a href="sign-up.html"><button class="btn btn-signup">Sign Up</button></a>
         </div>
 
         <button class="hamburger-btn">
             <i class="fas fa-bars"></i>
         </button>
-
-
     </header>
 
     <!-- Main Content -->
     <div class="main-container">
         <!-- Hero Section -->
-        <section class="hero-section">
+        <!-- Hero Section (default visible) -->
+        <section id="home-section" class="hero-section active-section">
             <div class="hero-content">
                 <h1 class="hero-title">Simplify Financial Management for Your Small Business</h1>
                 <p class="hero-subtitle">Kaci Connect helps township entrepreneurs track sales, manage expenses, and grow their business with easy-to-use financial tools.</p>
@@ -47,76 +44,107 @@
             </div>
         </section>
 
-        <!-- Features Section -->
-        <h2 class="section-title">Powerful Features for Your Business</h2>
-        
-        <div class="features-carousel">
-            <div class="carousel-container">
-                <div class="carousel-track">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-credit-card"></i>
-                        </div>
-                        <h3 class="feature-title">Sales Tracking</h3>
-                        <p class="feature-description">Easily record and monitor your daily sales, customer transactions, and revenue streams.</p>
+
+        <!-- About Section -->
+        <section id="about-section" class="about-section">
+            <div class="about-content">
+                <h1 class="about-title">About Kaci Connect</h1>
+                <p class="about-subtitle">Empowering South African township businesses with innovative financial solutions.</p>
+                
+                <div class="about-details">
+                    <div class="about-text">
+                        <h2>Our Mission</h2>
+                        <p>Kaci Connect was founded to address the unique financial challenges faced by township entrepreneurs. We believe every business owner deserves access to simple, effective financial tools that help them grow and thrive.</p>
+                        
+                        <h2>What We Do</h2>
+                        <p>We provide an intuitive platform that integrates with popular South African payment systems like YOCO, MTN, and Zapper, making it easy to track sales, manage expenses, and stay compliant with SARS regulations.</p>
+                        
+                        <h2>Our Team</h2>
+                        <p>Our diverse team of financial experts, developers, and business advisors are passionate about supporting the growth of township economies across South Africa.</p>
                     </div>
                     
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-money-bill-wave"></i>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <h3>500+</h3>
+                            <p>Businesses Empowered</p>
                         </div>
-                        <h3 class="feature-title">Expense Management</h3>
-                        <p class="feature-description">Track all business expenses, categorize spending, and identify cost-saving opportunities.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-boxes"></i>
+                        <div class="stat-item">
+                            <h3>15+</h3>
+                            <p>Townships Served</p>
                         </div>
-                        <h3 class="feature-title">Inventory Control</h3>
-                        <p class="feature-description">Manage your stock levels, get low inventory alerts, and optimize your product offerings.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-chart-bar"></i>
+                        <div class="stat-item">
+                            <h3>R2.5M+</h3>
+                            <p>Transactions Processed</p>
                         </div>
-                        <h3 class="feature-title">Business Reports</h3>
-                        <p class="feature-description">Generate detailed financial reports to understand your business performance and trends.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-hand-holding-usd"></i>
-                        </div>
-                        <h3 class="feature-title">Sponsor Connections</h3>
-                        <p class="feature-description">Connect with potential sponsors and investors interested in supporting small businesses.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-landmark"></i>
-                        </div>
-                        <h3 class="feature-title">Governance Tools</h3>
-                        <p class="feature-description">Maintain compliance with business regulations and manage official documentation.</p>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Sponsors Section -->
+        <section id="sponsors-section">
+            <h2 class="section-title">Sponsors</h2>
             
-            <div class="carousel-nav">
-                <button class="carousel-btn prev-btn">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <div class="carousel-dots"></div>
-                <button class="carousel-btn next-btn">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+            <div class="features-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-track">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <h3 class="feature-title">YOCO</h3>
+                            <p class="feature-description">Accept card payments and manage transactions with South Africa's leading payment provider.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <h3 class="feature-title">MTN</h3>
+                            <p class="feature-description">Process mobile money payments and connect with customers across Africa's telecom network.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-boxes"></i>
+                            </div>
+                            <h3 class="feature-title">Zapper</h3>
+                            <p class="feature-description">Enable QR code payments and streamline customer transactions with this popular SA payment solution.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h3 class="feature-title">StockFella</h3>
+                            <p class="feature-description">Access real-time JSE data and make informed investment decisions with local market insights.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-landmark"></i>
+                            </div>
+                            <h3 class="feature-title">SARS</h3>
+                            <p class="feature-description">Simplify tax compliance and submissions with direct integration to South Africa's revenue service.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-nav">
+                    <button class="carousel-btn prev-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel-dots"></div>
+                    <button class="carousel-btn next-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
             </div>
-        </div>
+        </section>
     </div>
 
     <!-- Footer -->
-    <footer class="website-footer">
+    <footer id="contact-section" class="website-footer">
         <div class="footer-content">
             <div class="footer-column">
                 <h3>Kaci Connect</h3>
@@ -126,11 +154,10 @@
             <div class="footer-column">
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">Testimonials</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#home-section">Home</a></li>
+                    <li><a href="#sponsors-section">Sponsors</a></li>
+                    <li><a href="#about-section">About</a></li>
+                    <li><a href="#contact-section">Contact</a></li>
                 </ul>
             </div>
             
@@ -156,7 +183,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2023 Kaci Connect. All rights reserved.</p>
+            <p>&copy; 2025 Kaci Connect. All rights reserved.</p>
         </div>
     </footer>
 

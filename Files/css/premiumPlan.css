@@ -198,7 +198,7 @@ body {
 }
 
 .expense {
-    color: var(--tshwane-red);
+    color: var(--tshwane-green);
 }
 
 /* Features section */
@@ -492,5 +492,52 @@ body {
 .feature-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+
+
+/* Dropdown container */
+.dropdown {
+  position: relative;
+}
+
+/* Hide dropdown by default */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%; /* directly below the parent */
+  left: 0;
+  background: white;
+  min-width: 180px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  border-radius: 6px;
+  z-index: 1000;
+  list-style: none;
+  padding: 10px 0;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Dropdown menu items */
+.dropdown-menu li {
+  margin: 0;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Hover effect */
+.dropdown-menu a:hover {
+  background: var(--tshwane-blue);
+  color: white;
 }
 

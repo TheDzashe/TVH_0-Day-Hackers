@@ -21,24 +21,26 @@ document.addEventListener('keydown', function(event) {
 
 // Handle login simulation
 function handleLogin() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    // const email = document.getElementById('email').value;
+    // const password = document.getElementById('password').value;
 
-    // Find user in testUsers array
-    const user = testUsers.find(u => u.email === email && u.password === password);
+    // // Find user in testUsers array
+    // const user = testUsers.find(u => u.email === email && u.password === password);
 
-    if (user) {
-        // Redirect based on user's plan
-        if (user.plan === 'free') {
-            window.location.href = 'freePlan.html';
-        } else if (user.plan === 'premium') {
-            window.location.href = 'premiumPlan.html';
-        }
-    } else {
-        alert('Invalid test user credentials');
-    }
+    // if (user) {
+    //     // Redirect based on user's plan
+    //     if (user.plan === 'free') {
+    //         window.location.href = 'freePlan.html';
+    //     } else if (user.plan === 'premium') {
+    //         window.location.href = 'premiumPlan.html';
+    //     }
+    // } else {
+    //     alert('Invalid test user credentials');
+    // }
 
-    return false; // Prevent form submission
+    // return false; // Prevent form submission
+
+    window.location.href = 'freePlan.html'; // Change to your desired page
 }
 
 // Handle social login (optional)

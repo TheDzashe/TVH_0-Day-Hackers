@@ -29,34 +29,80 @@
     
     <!-- Calculator -->
     <div class="bg-white rounded-lg p-6 shadow">
-      <h3 class="text-lg font-semibold text-[#007AFF] mb-4 flex items-center gap-2">
-        <i class="fas fa-calculator"></i> Calculator
-      </h3>
-      <div id="calculator" class="flex flex-col items-center">
-        <input id="calc-display" type="text" disabled class="w-full border border-gray-300 rounded mb-3 p-2 text-right text-lg">
+      <h3 class="text-lg font-semibold text-[#007AFF] mb-4">Sales Calculator</h3>
+      <div id="calculator" class="bg-gray-50 rounded-lg overflow-hidden shadow-inner">
+        <!-- Calculator Display -->
+        <div class="p-4 bg-white">
+          <div id="calculator-display" class="calculator-display text-right text-2xl font-semibold text-gray-800 py-2 px-3 bg-gray-100 rounded">
+            0
+          </div>
+        </div>
         
-        <div class="grid grid-cols-4 gap-2 w-full">
-          <button class="calc-btn">7</button>
-          <button class="calc-btn">8</button>
-          <button class="calc-btn">9</button>
-          <button class="calc-btn">/</button>
+        <!-- Calculator Buttons -->
+        <div class="grid grid-cols-4 gap-2 p-4">
+          <!-- Row 1 -->
+          <button class="calculator-btn col-span-2 bg-red-500 hover:bg-red-600 text-white font-bold py-3 rounded" onclick="clearCalculator()">
+            C
+          </button>
+          <button class="calculator-btn bg-gray-300 hover:bg-gray-400 font-bold py-3 rounded" onclick="deleteLast()">
+            ⌫
+          </button>
+          <button class="calculator-btn bg-[#007AFF] hover:bg-[#0050cc] text-white font-bold py-3 rounded" onclick="appendToDisplay('/')">
+            ÷
+          </button>
           
-          <button class="calc-btn">4</button>
-          <button class="calc-btn">5</button>
-          <button class="calc-btn">6</button>
-          <button class="calc-btn">*</button>
+          <!-- Row 2 -->
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('7')">
+            7
+          </button>
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('8')">
+            8
+          </button>
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('9')">
+            9
+          </button>
+          <button class="calculator-btn bg-[#007AFF] hover:bg-[#0050cc] text-white font-bold py-3 rounded" onclick="appendToDisplay('*')">
+            ×
+          </button>
           
-          <button class="calc-btn">1</button>
-          <button class="calc-btn">2</button>
-          <button class="calc-btn">3</button>
-          <button class="calc-btn">-</button>
+          <!-- Row 3 -->
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('4')">
+            4
+          </button>
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('5')">
+            5
+          </button>
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('6')">
+            6
+          </button>
+          <button class="calculator-btn bg-[#007AFF] hover:bg-[#0050cc] text-white font-bold py-3 rounded" onclick="appendToDisplay('-')">
+            -
+          </button>
           
-          <button class="calc-btn">0</button>
-          <button class="calc-btn">.</button>
-          <button class="calc-btn">=</button>
-          <button class="calc-btn">+</button>
+          <!-- Row 4 -->
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('1')">
+            1
+          </button>
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('2')">
+            2
+          </button>
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('3')">
+            3
+          </button>
+          <button class="calculator-btn bg-[#007AFF] hover:bg-[#0050cc] text-white font-bold py-3 rounded" onclick="appendToDisplay('+')">
+            +
+          </button>
           
-          <button id="clear" class="col-span-4 bg-red-500 text-white">C</button>
+          <!-- Row 5 -->
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('0')">
+            0
+          </button>
+          <button class="calculator-btn bg-gray-200 hover:bg-gray-300 font-bold py-3 rounded" onclick="appendToDisplay('.')">
+            .
+          </button>
+          <button class="calculator-btn col-span-2 bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded" onclick="calculateResult()">
+            =
+          </button>
         </div>
       </div>
     </div>
@@ -108,9 +154,30 @@
   <footer class="bg-gradient-to-r from-[#007AFF] to-[#0050cc] text-white px-[5%] py-10 mt-12">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-[1200px] mx-auto">
       <div>
-        <h3 class="text-lg mb-5">About Us</h3>
-        <p class="text-sm text-gray-200">Kaci Connect helps businesses manage sales, finances, and compliance with powerful tools.</p>
+        <h3 class="text-lg mb-5 pb-2 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-10 after:h-0.5 after:bg-[#FFFF00]">About Us</h3>
+        <p class="text-sm">Kaci Connect helps you manage your expenses efficiently with our easy-to-use tools and calculators.</p>
       </div>
+      <div>
+        <h3 class="text-lg mb-5 pb-2 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-10 after:h-0.5 after:bg-[#FFFF00]">Quick Links</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-[#FFFF00] transition">Home</a></li>
+          <li><a href="#" class="hover:text-[#FFFF00] transition">Features</a></li>
+          <li><a href="#" class="hover:text-[#FFFF00] transition">Pricing</a></li>
+          <li><a href="#" class="hover:text-[#FFFF00] transition">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg mb-5 pb-2 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-10 after:h-0.5 after:bg-[#FFFF00]">Contact Info</h3>
+        <ul class="space-y-2 text-sm">
+          <li>Email: info@kaciconnect.com</li>
+          <li>Phone: +27 12 345 6789</li>
+          <li>Address: 123 Finance St, Johannesburg</li>
+        </ul>
+      </div>
+      
+    </div>
+    <div class="border-t border-white/20 mt-8 pt-6 text-center text-sm">
+      <p>&copy; 2025 Kaci Connect. All rights reserved.</p>
     </div>
   </footer>
 
