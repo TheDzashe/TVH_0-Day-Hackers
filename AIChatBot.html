@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot - Kaci Connect Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/AIChatBot.css">
+
+</head>
+<body>
+    <!-- Website Header -->
+    <header class="website-header">
+        <div class="logo">KACI CONNECT <span class="premium-badge">PREMIUM</span></div>
+        
+        <ul class="nav-menu">
+            <li><a href="premiumPlan.html">Dashboard</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        
+        <div class="auth-buttons">
+            <a href="premiumPlan.html" class="btn btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Chat Container -->
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1><i class="fas fa-robot"></i> Kaci AI Assistant</h1>
+            <p>Your premium business advisor - available 24/7 for financial insights and recommendations</p>
+        </div>
+
+        <div class="chat-interface">
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot-message">
+                    <div class="message-sender">Kaci AI</div>
+                    <div class="message-content">
+                        Hello! I'm your Kaci AI assistant. I can help you with financial insights, business recommendations, sales analysis, expense tracking, and much more. How can I assist you today?
+                    </div>
+                    <div class="message-time">Just now</div>
+                </div>
+            </div>
+
+            <div class="suggestions">
+                <div class="suggestions-title">Quick suggestions:</div>
+                <div class="suggestion-chips">
+                    <div class="suggestion-chip" onclick="sendSuggestion('Analyze my sales trends')">Analyze my sales trends</div>
+                    <div class="suggestion-chip" onclick="sendSuggestion('Help with expense tracking')">Help with expense tracking</div>
+                    <div class="suggestion-chip" onclick="sendSuggestion('Inventory management tips')">Inventory management tips</div>
+                    <div class="suggestion-chip" onclick="sendSuggestion('Financial forecast')">Financial forecast</div>
+                </div>
+            </div>
+
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Ask me anything about your business..." onkeypress="handleKeyPress(event)">
+                <button onclick="sendMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="website-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Kaci Connect Premium</h3>
+                <p>Advanced financial management with AI-powered insights for growing businesses.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="premiumPlan.html">Dashboard</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Testimonials</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Premium Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Business Insights</a></li>
+                    <li><a href="#">AI Tools</a></li>
+                    <li><a href="#">Advanced Tutorials</a></li>
+                    <li><a href="#">Priority Support</a></li>
+                    <li><a href="#">Exclusive Webinars</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> premium@Kaciconnect.com</li>
+                    <li><i class="fas fa-phone"></i> +27 11 123 PREMIUM</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Johannesburg, South Africa</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Kaci Connect Premium. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/AIChatBot.js"></script>
+</body>
+</html>
