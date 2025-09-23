@@ -35,46 +35,39 @@
                     <a href="#" class="view-all">View All</a>
                 </div>
                 
-                <div class="transaction-item">
-                    <div class="transaction-details">
-                        <div class="transaction-icon">
-                            <i class="fas fa-wallet"></i>
-                        </div>
-                        <div class="transaction-info">
-                            <div class="transaction-name">Total</div>
-                            <div class="transaction-date">Today, 09:15 AM</div>
-                        </div>
-                    </div>
-                    <div class="transaction-amount expense">+470.00</div>
-                </div>
-                
-                <div class="transaction-item">
-                    <div class="transaction-details">
-                        <div class="transaction-icon">
-                            <i class="fas fa-dollar-sign"></i>
-                        </div>
-                        <div class="transaction-info">
-                            <div class="transaction-name">Profit</div>
-                            <div class="transaction-date">Today, 08:45 AM</div>
-                        </div>
-                    </div>
-                    <div class="transaction-amount expense">+R350.00</div>
-                </div>
-                
-                <div class="transaction-item">
-                    <div class="transaction-details">
-                        <div class="transaction-icon">
-                            <i class="fas fa-receipt"></i>
-                        </div>
-                        <div class="transaction-info">
-                            <div class="transaction-name">Expenses</div>
-                            <div class="transaction-date">Yesterday, 11:45 AM</div>
-                        </div>
-                    </div>
-                    <div class="transaction-amount income">+120.00</div>
-                </div>
+    <div class="transaction-item">
+        <div class="transaction-details">
+            <div class="transaction-icon"><i class="fas fa-wallet"></i></div>
+            <div class="transaction-info">
+            <div class="transaction-name">Total</div>
+            <div class="transaction-date">Today, 09:15 AM</div>
             </div>
         </div>
+        <div id="total-balance" class="transaction-amount expense">+R0.00</div>
+        </div>
+
+        <div class="transaction-item">
+        <div class="transaction-details">
+            <div class="transaction-icon"><i class="fas fa-dollar-sign"></i></div>
+            <div class="transaction-info">
+            <div class="transaction-name">Profit</div>
+            <div class="transaction-date">Today, 08:45 AM</div>
+            </div>
+        </div>
+        <div id="profit-balance" class="transaction-amount expense">+R0.00</div>
+        </div>
+
+        <div class="transaction-item">
+        <div class="transaction-details">
+            <div class="transaction-icon"><i class="fas fa-receipt"></i></div>
+            <div class="transaction-info">
+            <div class="transaction-name">Expenses</div>
+            <div class="transaction-date">Yesterday, 11:45 AM</div>
+            </div>
+        </div>
+        <div id="expenses-balance" class="transaction-amount income">+R0.00</div>
+        </div>
+
 
         <!-- Features Section -->
         <div class="features-grid">
@@ -237,5 +230,32 @@
     </footer>
 
     <script src="js/premiumPlan.js"></script>
+    <script>
+function updateDailyBalance() {
+  // Get sales and expenses from localStorage
+  let sales = JSON.parse(localStorage.getItem("sales")) || [];
+  let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+
+  // Calculate totals
+  let salesTotal = sales.reduce((sum, s) => sum + (s.price * s.quantity), 0);
+  let expensesTotal = expenses.reduce((sum, e) => sum + e.amount, 0);
+
+  // Profit = Sales - Expenses
+  let profit = salesTotal - expensesTotal;
+
+  // Total = Profit - Expenses
+  let total = profit - expensesTotal;
+
+  // Update DOM
+  document.getElementById("total-balance").textContent = `R${total.toFixed(2)}`;
+  document.getElementById("expenses-balance").textContent = `R${expensesTotal.toFixed(2)}`;
+  document.getElementById("profit-balance").textContent = `R${profit.toFixed(2)}`;
+}
+
+// Run once on page load
+updateDailyBalance();
+
+
+    </script>
 </body>
 </html>

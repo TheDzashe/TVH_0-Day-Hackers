@@ -11,18 +11,11 @@
   <!-- Website Header -->
   <header class="bg-gradient-to-r from-[#007AFF] to-[#0050cc] text-white px-[5%] py-4 flex justify-between items-center shadow-md">
     <div class="text-2xl font-bold">KACI CONNECT</div>
-    
     <ul class="hidden md:flex list-none">
-      <li class="mx-4"><a href="#" class="text-white font-medium hover:text-[#FFFF00] transition">Home</a></li>
-      <li class="mx-4"><a href="#" class="text-white font-medium hover:text-[#FFFF00] transition">Features</a></li>
-      <li class="mx-4"><a href="#" class="text-white font-medium hover:text-[#FFFF00] transition">Pricing</a></li>
-      <li class="mx-4"><a href="#" class="text-white font-medium hover:text-[#FFFF00] transition">About</a></li>
-      <li class="mx-4"><a href="#" class="text-white font-medium hover:text-[#FFFF00] transition">Contact</a></li>
+      <li class="mx-4"><a href="premiumPlan.html" class="text-white font-medium hover:text-[#FFFF00] transition">Home</a></li>
     </ul>
-    
     <div class="flex gap-4">
-      <button class="px-5 py-2 rounded border border-white text-white font-medium hover:bg-white/10 transition">Profile</button>
-      <!-- <button class="px-5 py-2 rounded bg-[#FFFF00] border border-[#FFFF00] text-[#141414] font-medium hover:bg-[#e6e600] hover:border-[#e6e600] transition">Sign Up</button> -->
+      <button id="logout-btn" class="px-5 py-2 rounded border border-white text-white font-medium hover:bg-white/10 transition">Logout</button>
     </div>
   </header>
 
@@ -33,15 +26,15 @@
     <section class="grid grid-cols-1 sm:grid-cols-3 gap-6">
       <div class="bg-white shadow-md rounded-xl p-6 text-center">
         <div class="text-gray-500 text-sm">Net Balance</div>
-        <div class="text-2xl font-bold text-blue-600 mt-2">R1,250.00</div>
+        <div id="net-balance" class="text-2xl font-bold text-blue-600 mt-2">R0.00</div>
       </div>
       <div class="bg-white shadow-md rounded-xl p-6 text-center">
         <div class="text-gray-500 text-sm">Total Profit</div>
-        <div class="text-2xl font-bold text-green-600 mt-2">R3,400.00</div>
+        <div id="total-profit" class="text-2xl font-bold text-green-600 mt-2">R0.00</div>
       </div>
       <div class="bg-white shadow-md rounded-xl p-6 text-center">
         <div class="text-gray-500 text-sm">Total Expenses</div>
-        <div class="text-2xl font-bold text-red-600 mt-2">R2,150.00</div>
+        <div id="total-expenses" class="text-2xl font-bold text-red-600 mt-2">R0.00</div>
       </div>
     </section>
 
@@ -68,36 +61,72 @@
             <th class="p-3 border">Balance</th>
           </tr>
         </thead>
-        <tbody>
-          <tr class="hover:bg-gray-50">
-            <td class="p-3 border">2025-09-22</td>
-            <td class="p-3 border">Sale #001</td>
-            <td class="p-3 border">Profit</td>
-            <td class="p-3 border text-green-600">+R500.00</td>
-            <td class="p-3 border">R1,250.00</td>
-          </tr>
-          <tr class="hover:bg-gray-50">
-            <td class="p-3 border">2025-09-22</td>
-            <td class="p-3 border">Office Supplies</td>
-            <td class="p-3 border">Expense</td>
-            <td class="p-3 border text-red-600">-R200.00</td>
-            <td class="p-3 border">R750.00</td>
-          </tr>
-          <tr class="hover:bg-gray-50">
-            <td class="p-3 border">2025-09-21</td>
-            <td class="p-3 border">Sale #002</td>
-            <td class="p-3 border">Profit</td>
-            <td class="p-3 border text-green-600">+R1,200.00</td>
-            <td class="p-3 border">R950.00</td>
-          </tr>
+        <tbody id="transactions-body">
+          <!-- Transactions load dynamically -->
         </tbody>
       </table>
     </section>
-
   </main>
- <!-- Footer -->
-  <footer class="bg-gradient-to-r from-[#007AFF] to-[#0050cc] text-white px-[5%] py-10 mt-12">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-[1200px] mx-auto">
-      <div>
-        <h3 class="text-lg mb-5 pb-2 relative after:content-['
 
+  <script>
+    function loadReport() {
+      // Get data from localStorage
+      let sales = JSON.parse(localStorage.getItem("sales")) || [];
+      let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+      let stocks = JSON.parse(localStorage.getItem("stocks")) || [];
+
+      // Totals
+      let salesTotal = sales.reduce((sum, s) => sum + (s.price * s.quantity), 0);
+      let expensesTotal = expenses.reduce((sum, e) => sum + e.amount, 0);
+      let profit = salesTotal - expensesTotal;
+      let netBalance = profit; // Net Balance = Profit (you can change if stock impacts balance)
+
+      // Update summary cards
+      document.getElementById("net-balance").textContent = `R${netBalance.toFixed(2)}`;
+      document.getElementById("total-profit").textContent = `R${profit.toFixed(2)}`;
+      document.getElementById("total-expenses").textContent = `R${expensesTotal.toFixed(2)}`;
+
+      // Transactions table
+      let tbody = document.getElementById("transactions-body");
+      tbody.innerHTML = "";
+
+      // Add sales transactions
+      sales.forEach(s => {
+        let tr = document.createElement("tr");
+        tr.className = "hover:bg-gray-50";
+        tr.innerHTML = `
+          <td class="p-3 border">${s.date || "N/A"}</td>
+          <td class="p-3 border">${s.item}</td>
+          <td class="p-3 border text-green-600">Profit</td>
+          <td class="p-3 border text-green-600">+R${(s.price * s.quantity).toFixed(2)}</td>
+          <td class="p-3 border">--</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // Add expenses transactions
+      expenses.forEach(e => {
+        let tr = document.createElement("tr");
+        tr.className = "hover:bg-gray-50";
+        tr.innerHTML = `
+          <td class="p-3 border">${e.date || "N/A"}</td>
+          <td class="p-3 border">${e.description || "Expense"}</td>
+          <td class="p-3 border text-red-600">Expense</td>
+          <td class="p-3 border text-red-600">-R${e.amount.toFixed(2)}</td>
+          <td class="p-3 border">--</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // LOGOUT BUTTON
+    document.getElementById("logout-btn").addEventListener("click", function() {
+      localStorage.removeItem("user");
+      window.location.href = "index.html";
+    });
+
+    // Run on page load
+    loadReport();
+  </script>
+</body>
+</html>
