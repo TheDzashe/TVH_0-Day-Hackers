@@ -42,6 +42,16 @@ function toggleChatbot() {
             ];
             return responses[Math.floor(Math.random() * responses.length)];
         }
+  function handleLogout() {
+    // Remove the current user from localStorage
+    localStorage.removeItem('currentUser');
+
+    // Optionally, show a message
+    alert('✅ You have been logged out successfully.');
+
+    // Redirect to login or homepage
+    window.location.href = 'index.html'; // or 'login.html'
+}
 
         // Enter key support for chatbot
         document.getElementById('chatbot-input').addEventListener('keypress', function(e) {

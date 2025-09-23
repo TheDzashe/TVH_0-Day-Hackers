@@ -17,6 +17,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
                 observer.observe(card);
             });
+            function handleLogout() {
+    // Remove the current user from localStorage
+    localStorage.removeItem('currentUser');
+
+    // Optionally, show a message
+    alert('✅ You have been logged out successfully.');
+
+    // Redirect to login or homepage
+    window.location.href = 'index.html'; // or 'login.html'
+}
             
             // Login/signup button functionality
             const loginBtn = document.querySelector('.btn-login');
